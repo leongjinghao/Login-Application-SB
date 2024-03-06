@@ -2,6 +2,8 @@ package com.example.demo.service;
 
 import java.util.Arrays;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.controller.dto.UserRegistrationDto;
@@ -29,6 +31,13 @@ public class UserService implements UserServiceInterface{
 				Arrays.asList(new Role("ROLE_USER")));
 		
 		return userRepository.save(user);
+	}
+
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
