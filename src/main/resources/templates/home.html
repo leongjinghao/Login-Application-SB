@@ -15,7 +15,7 @@
 	<!-- Nav bar -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="/">[[#{app.title}]]</a>
+			<a class="navbar-brand" href="/home">[[#{app.title}]]</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
 				aria-controls="navbarNavAltMarkup" aria-expanded="false"
@@ -24,12 +24,15 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-link active" href="/" th:href="@{/index}">Home</a>
-					<a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/" th:href="@{/dashboard}">Dashboard</a>
+					<a class="nav-link active" th:href="@{/home}">[[#{nav.home}]]</a>
+					<a sec:authorize="hasRole('ADMIN')" class="nav-link" th:href="@{/dashboard}">[[#{nav.dashboard}]]</a>
 				</div>
 			</div>
-			<div sec:authorize="isAuthenticated()" class="d-grid gap-2 d-md-flex justify-content-md-end">
-				<a class="btn btn-outline-danger" type="button" href="/" th:href="@{/logout}">Logout</a>
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<a class="nav-link" th:href="@{?lang=en}">[[#{nav.english}]]</a>
+				<hr width="1" size="auto"/>
+				<a class="nav-link" th:href="@{?lang=ch}">[[#{nav.chinese}]]</a>
+				<a sec:authorize="isAuthenticated()" class="btn btn-outline-danger" type="button" th:href="@{/logout}">[[#{nav.logout}]]</a>
 			</div>
 		</div>
 	</nav>
@@ -38,14 +41,14 @@
 		<div class="row">
 			<div class="col-md-6 offset-md-3">
 				<div sec:authorize="isAuthenticated()" class="container">
-					<h1>Home</h1>
+					<h1>[[#{home.title}]]</h1>
 					
 					<br>
-					<h3>Welcome 
+					<h3>[[#{home.welcome}]] 
 						<span th:text="${userDetails.firstName}"></span>, 
 						<span th:text="${userDetails.lastName}"></span>
 					</h3>
-					Your registered email:  
+					[[#{home.registeredEmail}]]  
 					<span th:text="${userDetails.email}"></span>
 				</div>
 			</div>

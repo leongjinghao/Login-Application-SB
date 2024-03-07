@@ -24,9 +24,15 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-link active" href="/" th:href="@{/login}">[[#{nav.login}]]</a>
-					<a class="nav-link" href="/" th:href="@{/registration}">[[#{nav.registration}]]</a>
+					<a class="nav-link active" th:href="@{/login}">[[#{nav.login}]]</a>
+					<a class="nav-link" th:href="@{/registration}">[[#{nav.registration}]]</a>
 				</div>
+			</div>
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<a class="nav-link" th:href="@{?lang=en}">[[#{nav.english}]]</a>
+				<hr width="1" size="auto"/>
+				<a class="nav-link" th:href="@{?lang=ch}">[[#{nav.chinese}]]</a>
+				<a sec:authorize="isAuthenticated()" class="btn btn-outline-danger" type="button" th:href="@{/logout}">[[#{nav.logout}]]</a>
 			</div>
 		</div>
 	</nav>
@@ -35,7 +41,7 @@
 		<div class="row">
 			<div class="col-md-6 offset-md-3">
 
-				<h1>Login Page</h1>
+				<h1>[[#{login.title}]]</h1>
 				<br>
 
 				<!-- error message -->
@@ -52,24 +58,26 @@
 				<form th:action="@{/login}" method="post">
 					<div class="form-group">
 						<div class="mb-3">
-							<label for="inputEmail1" class="form-label">Email address</label>
+							<label for="inputEmail1" class="form-label">[[#{login.email}]]</label>
 							<input type="email" class="form-control" id="inputEmail"
-								name="username" placeholder="Enter Email"
+								name="username" th:placeholder="#{login.emailPrompt}"
 								autofocus="autofocus" />
 						</div>
 						<div class="mb-3">
-							<label for="inputPassword" class="form-label">Password</label> <input
+							<label for="inputPassword" class="form-label">[[#{login.password}]]</label> <input
 								type="password" class="form-control" id="inputPassword"
-								name="password" placeholder="Enter Password"
+								name="password" th:placeholder="#{login.passwordPrompt}"
 								autofocus="autofocus" />
 						</div>
-						<button type="submit" class="btn btn-primary">Log In</button>
+						<button type="submit" class="btn btn-primary">[[#{login.loginBtn}]]</button>
 
 					</div>
 				</form>
 
-				<br> <span> New user? <a href="/"
-					th:href="@{/registration}">Register here</a>
+				<br>
+				<span>
+					[[#{login.newUserPrompt}]] 
+					<a th:href="@{/registration}">[[#{login.registerLink}]]</a>
 				</span>
 
 

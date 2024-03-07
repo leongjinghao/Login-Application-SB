@@ -27,8 +27,9 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(requests -> requests.requestMatchers(
-        		"/login**/**",
-        		"/registration**/**",
+        		"/",
+        		"/login/**",
+        		"/registration/**",
                 "/js/**",
                 "/css/**",
                 "/img/**").permitAll()

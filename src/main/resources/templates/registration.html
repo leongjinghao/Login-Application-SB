@@ -22,9 +22,15 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-link" href="/" th:href="@{/login}">[[#{nav.login}]]</a>
-					<a class="nav-link active" href="/" th:href="@{/registration}">[[#{nav.registration}]]</a>
+					<a class="nav-link" th:href="@{/login}">[[#{nav.login}]]</a>
+					<a class="nav-link active" th:href="@{/registration}">[[#{nav.registration}]]</a>
 				</div>
+			</div>
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<a class="nav-link" th:href="@{?lang=en}">[[#{nav.english}]]</a>
+				<hr width="1" size="auto"/>
+				<a class="nav-link" th:href="@{?lang=ch}">[[#{nav.chinese}]]</a>
+				<a sec:authorize="isAuthenticated()" class="btn btn-outline-danger" type="button" th:href="@{/logout}">[[#{nav.logout}]]</a>
 			</div>
 		</div>
 	</nav>
@@ -33,53 +39,54 @@
 		<div class="row">
 			<div class="col-md-6 offset-md-3">
 
-				<h1>Registration Page</h1><br>
+				<h1>[[#{registration.title}]]</h1><br>
 
 				<!-- success message -->
 				<div th:if="${param.success}">
-					<div class="alert alert-success">Registration success!</div>
+					<div class="alert alert-success">[[#{registration.success}]]</div>
 				</div>
 				
 				<!-- error message -->
 				<div th:if="${param.error}">
-					<div class="alert alert-danger">Email entered is already registered</div>
+					<div class="alert alert-danger">[[#{registration.emailRegisterError}]]</div>
 				</div>
 
 				<!-- Registration form -->
 				<form th:action="@{/registration}" method="post" th:object="${userRegistration}">
 					<div class="form-group">
 						<div class="mb-3">
-							<label for="inputFirstName" class="form-label">First Name</label>
+							<label for="inputFirstName" class="form-label">[[#{registration.firstName}]]</label>
 							<input type="text" class="form-control" id="inputFirstName" th:field="*{firstName}" required
 								autofocus="autofocus" />
 						</div>
 						<div class="mb-3">
-							<label for="inputLastName" class="form-label">Last Name</label>
+							<label for="inputLastName" class="form-label">[[#{registration.lastName}]]</label>
 							<input type="text" class="form-control" id="inputLastName" th:field="*{lastName}" required
 								autofocus="autofocus" />
 						</div>
 						<div class="mb-3">
-							<label for="inputEmail" class="form-label">Email address</label>
+							<label for="inputEmail" class="form-label">[[#{registration.email}]]</label>
 							<input type="email" class="form-control" id="inputEmail" th:field="*{email}"
 								aria-describedby="emailHelp" />
-							<div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+							<div id="emailHelp" class="form-text">[[#{registration.emailHelp}]]</div>
 						</div>
 						<div class="mb-3">
-							<label for="inputPassword" class="form-label">Password</label>
+							<label for="inputPassword" class="form-label">[[#{registration.password}]]</label>
 							<input type="password" class="form-control" id="inputPassword" th:field="*{password}"
 								required pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$"
 								autofocus="autofocus" />
 							<div id="passwordHelpBlock" class="form-text">
-								Your password must be 8-20 characters long, contain letters and numbers, and at least
-								a special character.
+								[[#{registration.passwordHelp}]]
 							</div>
 						</div>
-						<button type="submit" class="btn btn-primary">Register</button>
+						<button type="submit" class="btn btn-primary">[[#{registration.registerBtn}]]</button>
 					</div>
 				</form>
-				<br><span>
-					Already registered?
-					<a href="/" th:href="@{/login}">Login here</a>
+				
+				<br>
+				<span>
+					[[#{registration.alreadyRegistered}]]
+					<a th:href="@{/login}">[[#{registration.loginLink}]]</a>
 				</span>
 
 			</div>

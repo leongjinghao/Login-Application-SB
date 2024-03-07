@@ -9,6 +9,7 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 </head>
+
 <body>
 
 	<!-- Nav bar -->
@@ -23,9 +24,15 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-link" href="/" th:href="@{/login}">[[#{nav.login}]]</a>
-					<a class="nav-link" href="/" th:href="@{/registration}">[[#{nav.registration}]]</a>
+					<a class="nav-link" th:href="@{/login}">[[#{nav.login}]]</a>
+					<a class="nav-link" th:href="@{/registration}">[[#{nav.registration}]]</a>
 				</div>
+			</div>
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<a class="nav-link" th:href="@{?lang=en}">[[#{nav.english}]]</a>
+				<hr width="1" size="auto"/>
+				<a class="nav-link" th:href="@{?lang=ch}">[[#{nav.chinese}]]</a>
+				<a sec:authorize="isAuthenticated()" class="btn btn-outline-danger" type="button" th:href="@{/logout}">[[#{nav.logout}]]</a>
 			</div>
 		</div>
 	</nav>
@@ -34,15 +41,15 @@
 		<div class="row">
 			<div class="col-md-6 offset-md-3">
 				<div class="container">
-					<h1>Welcome to My Login Application!</h1>
+					<h1>[[#{index.title}]]</h1>
 					
 					<br>
 					
-					Please
-					<a style="display: inline-block" class="nav-link" href="/" th:href="@{/login}">[[#{nav.login}]]</a>
-					or continue with
-					<a style="display: inline-block" class="nav-link" href="/" th:href="@{/registration}">[[#{nav.registration}]]</a>
-					to use the Application!
+					[[#{index.please}]]
+					<a style="display: inline-block" class="nav-link" th:href="@{/login}">[[#{nav.login}]]</a>
+					[[#{index.orContinueWith}]]
+					<a style="display: inline-block" class="nav-link" th:href="@{/registration}">[[#{nav.registration}]]</a>
+					[[#{index.toUseTheApplication}]]
 				</div>
 			</div>
 		</div>
