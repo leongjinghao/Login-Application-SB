@@ -21,18 +21,32 @@
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a sec:authorize="isAuthenticated()" class="nav-link" href="/" th:href="@{/logout}">Logout</a>
 				</div>
+			</div> -->
+			<div sec:authorize="isAuthenticated()" class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<a class="btn btn-outline-danger" type="button" href="/" th:href="@{/logout}">Logout</a>
 			</div>
 		</div>
 	</nav>
 	
 	<div class="container">
-		<h1>Home</h1>
-		
-		Welcome <span sec:authentication="principal.username"> User</span>
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<div sec:authorize="isAuthenticated()" class="container">
+					<h1>Home</h1>
+					
+					<br>
+					<h3>Welcome 
+						<span th:text="${userDetails.firstName}"></span>, 
+						<span th:text="${userDetails.lastName}"></span>
+					</h3>
+					Your registered email:  
+					<span th:text="${userDetails.email}"></span>
+				</div>
+			</div>
+		</div>
 	</div>
 	
 </body>

@@ -17,7 +17,7 @@ import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepositoryInterface;
 
-@Service("userService")
+@Service
 public class UserService implements UserServiceInterface {
 
 	private UserRepositoryInterface userRepository;
