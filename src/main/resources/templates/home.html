@@ -47,6 +47,7 @@
 					<h3>[[#{home.welcome}]] 
 						<span th:text="${userDetails.firstName}"></span>, 
 						<span th:text="${userDetails.lastName}"></span>
+						<span sec:authentication="principal.authorities"></span>
 					</h3>
 					[[#{home.registeredEmail}]]  
 					<span th:text="${userDetails.email}"></span>
