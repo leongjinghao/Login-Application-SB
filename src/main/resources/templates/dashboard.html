@@ -10,7 +10,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	
+
 	<!-- Nav bar -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
@@ -23,8 +23,8 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-link active" href="/" th:href="@{/index}">Home</a>
-					<a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/" th:href="@{/dashboard}">Dashboard</a>
+					<a class="nav-link" href="/" th:href="@{/index}">Home</a>
+					<a class="nav-link active" href="/" th:href="@{/dashboard}">Dashboard</a>
 				</div>
 			</div>
 			<div sec:authorize="isAuthenticated()" class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -36,17 +36,27 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 offset-md-3">
-				<div sec:authorize="isAuthenticated()" class="container">
-					<h1>Home</h1>
-					
-					<br>
-					<h3>Welcome 
-						<span th:text="${userDetails.firstName}"></span>, 
-						<span th:text="${userDetails.lastName}"></span>
-					</h3>
-					Your registered email:  
-					<span th:text="${userDetails.email}"></span>
-				</div>
+				
+				<h1>Dashboard</h1><br>
+				
+				<table class="table table-bordered table-hover">
+			        <thead class="table-dark">
+			            <tr>
+			                <th>First Name</th>
+			                <th>Last Name</th>
+			                <th>Email</th>
+			                <th>Roles</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			            <tr th:each = "user : ${users}">
+			                <td th:text = "${user.firstName}"></td>
+			                <td th:text = "${user.lastName}"></td>
+			                <td th:text = "${user.email}"></td>
+			                <td th:text = "${user.roles}"></td>
+			            </tr>
+			        </tbody>
+			    </table>
 			</div>
 		</div>
 	</div>

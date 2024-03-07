@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -12,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.controller.dto.UserDetailsDto;
 import com.example.demo.controller.dto.UserRegistrationDto;
 import com.example.demo.model.Role;
 import com.example.demo.model.User;
@@ -38,11 +40,26 @@ public class UserService implements UserServiceInterface {
 	}
 	
 	@Override
-	public List<User> findAllUsers() {
+	public List<UserDetailsDto> findAllUsers() {
 		List<User> users = userRepository.findAll();
         return users.stream()
+        		.map(user -> mapToUserDetailsDto(user))
         		.collect(Collectors.toList());
 	}
+	
+	private UserDetailsDto mapToUserDetailsDto(User user){
+        UserDetailsDto userDetailsDto = new UserDetailsDto();
+        userDetailsDto.setFirstName(user.getFirstName());
+        userDetailsDto.setLastName(user.getLastName());
+        userDetailsDto.setEmail(user.getEmail());
+        
+        List<String> rolesInList = new ArrayList<String>();
+        for (Role role : user.getRoles()) {
+        	rolesInList.add(role.getName());
+        }
+        userDetailsDto.setRoles(String.join(", ", rolesInList));
+        return userDetailsDto;
+    }
 	
 	@Override
 	public User findUserByEmail(String email) {
