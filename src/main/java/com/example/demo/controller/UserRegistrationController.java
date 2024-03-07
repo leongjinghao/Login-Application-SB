@@ -20,7 +20,7 @@ public class UserRegistrationController {
 		this.userService = userService;
 	}
 	
-	@ModelAttribute("user")
+	@ModelAttribute("userRegistration")
 	public UserRegistrationDto userRegistrationDto() {
 		return new UserRegistrationDto();
 	}
@@ -31,8 +31,13 @@ public class UserRegistrationController {
 	}
 	
 	@PostMapping
-	public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto registrationDto) {
-		userService.save(registrationDto);
-		return "redirect:/registration?success";
+	public String registerUserAccount(@ModelAttribute("userRegistration") UserRegistrationDto userRegistrationDto) {
+		if (userService.checkEmailRegistered(userRegistrationDto.getEmail())) {
+			return "redirect:/registration?error";
+		}
+		else {
+			userService.saveUser(userRegistrationDto);
+			return "redirect:/registration?success";
+		}
 	}
 }
