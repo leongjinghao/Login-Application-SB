@@ -31,7 +31,13 @@ All user creation will be done primarily on the registration page, the backend A
 - Authenticated user (ADMIN): able to access index, login, register, home, and dashboard page.
 - Logging out: Authenticated user -> Unauthenticated user
 
-Dashboard Page:
+## Authenticated User (USER) Home Page:
+![image](https://github.com/leongjinghao/Login-Application-SB/assets/73938217/c0ff6034-4a26-4d88-83ab-e0bde0090b14)
+
+## Authenticated User (ADMIN) Home Page:
+![image](https://github.com/leongjinghao/Login-Application-SB/assets/73938217/8add02b1-4c40-4600-891f-d2b1e7d2926d)
+
+## Dashboard Page:
 ![image](https://github.com/leongjinghao/Login-Application-SB/assets/73938217/2e178126-3a1c-4893-8e81-86de0033bfc9)
 
 # IV. Multi Language/Translation Support
