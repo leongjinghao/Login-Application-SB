@@ -9,8 +9,9 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 </head>
-<body>
 
+<body>
+	
 	<!-- Nav bar -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
@@ -23,9 +24,12 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-link" href="/" th:href="@{/login}">[[#{nav.login}]]</a>
-					<a class="nav-link" href="/" th:href="@{/registration}">[[#{nav.registration}]]</a>
+					<a class="nav-link active" href="/" th:href="@{/index}">Home</a>
+					<a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/" th:href="@{/dashboard}">Dashboard</a>
 				</div>
+			</div>
+			<div sec:authorize="isAuthenticated()" class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<a class="btn btn-outline-danger" type="button" href="/" th:href="@{/logout}">Logout</a>
 			</div>
 		</div>
 	</nav>
@@ -33,16 +37,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 offset-md-3">
-				<div class="container">
-					<h1>Welcome to My Login Application!</h1>
+				<div sec:authorize="isAuthenticated()" class="container">
+					<h1>Home</h1>
 					
 					<br>
-					
-					Please
-					<a style="display: inline-block" class="nav-link" href="/" th:href="@{/login}">[[#{nav.login}]]</a>
-					or continue with
-					<a style="display: inline-block" class="nav-link" href="/" th:href="@{/registration}">[[#{nav.registration}]]</a>
-					to use the Application!
+					<h3>Welcome 
+						<span th:text="${userDetails.firstName}"></span>, 
+						<span th:text="${userDetails.lastName}"></span>
+					</h3>
+					Your registered email:  
+					<span th:text="${userDetails.email}"></span>
 				</div>
 			</div>
 		</div>

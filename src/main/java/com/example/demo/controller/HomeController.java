@@ -12,7 +12,7 @@ import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 
 @Controller
-@RequestMapping("/index")
+@RequestMapping("/home")
 public class HomeController {
 	
 	private UserService userService;
@@ -34,6 +34,6 @@ public class HomeController {
     	userDetailsDto.setFirstName(user.getFirstName());
     	userDetailsDto.setLastName(user.getLastName());
     	userDetailsDto.setEmail(user.getEmail());
-        return "index";
+        return "home";
     }
 }
