@@ -46,12 +46,12 @@
 
 				<!-- error message -->
 				<div th:if="${param.error}">
-					<div class="alert alert-danger">Invalid userid or password</div>
+					<div class="alert alert-danger">[[#{login.fail}]]</div>
 				</div>
 
 				<!-- logout message -->
 				<div th:if="${param.logout}">
-					<div class="alert alert-info">Logged out successfully</div>
+					<div class="alert alert-info">[[#{login.logoutSuccess}]]</div>
 				</div>
 
 				<!-- Login form -->
