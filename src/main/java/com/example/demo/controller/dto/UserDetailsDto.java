@@ -1,9 +1,5 @@
 package com.example.demo.controller.dto;
 
-import java.util.Collection;
-
-import com.example.demo.model.Role;
-
 public class UserDetailsDto {
 	private String firstName;
 	private String lastName;
@@ -13,7 +9,6 @@ public class UserDetailsDto {
 	public UserDetailsDto() { }
 	
 	public UserDetailsDto(String firstName, String lastName, String email, String roles) {
-		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;

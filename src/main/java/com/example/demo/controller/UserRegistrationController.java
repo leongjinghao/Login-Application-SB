@@ -16,7 +16,6 @@ public class UserRegistrationController {
 	private UserService userService;
 
 	public UserRegistrationController(UserService userService) {
-		super();
 		this.userService = userService;
 	}
 	

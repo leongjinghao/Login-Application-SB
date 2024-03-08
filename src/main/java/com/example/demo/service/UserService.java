@@ -26,7 +26,6 @@ public class UserService implements UserServiceInterface {
     private PasswordEncoder passwordEncoder;
 
 	public UserService(UserRepositoryInterface userRepository, PasswordEncoder passwordEncoder) {
-		super();
 		this.userRepository = userRepository;
 		this.passwordEncoder = passwordEncoder;
 	}
